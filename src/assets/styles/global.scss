@@ -1,0 +1,54 @@
+// src/assets/styles/global.scss
+
+$primary-font: 'Inter', sans-serif;
+$base-color: #333;
+$background-color: #f8f8f8;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: $primary-font;
+    font-size: 16px;
+    color: $base-color;
+    background-color: $background-color;
+    line-height: 1.5;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: darken($base-color, 10%);
+    }
+}
