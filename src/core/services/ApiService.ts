@@ -1,10 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const ApiService = axios.create({
-  baseURL: import.meta.env.VITE_API_DOMAIN || "http://localhost:8000/api",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: import.meta.env.VITE_API_DOMAIN,
 });
 
 ApiService.interceptors.response.use(

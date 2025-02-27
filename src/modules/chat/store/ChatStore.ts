@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import ChatService from "@/modules/chat/services/ChatService";
 
-export const useChatStore = defineStore("chat", {
+export const ChatStore = defineStore("chat", {
   state: () => ({
     messages: [] as { sender: "user" | "bot"; text: string }[],
     loading: false,

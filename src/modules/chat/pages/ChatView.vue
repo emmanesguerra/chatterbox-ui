@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useChatStore } from "@/modules/chat/store/useChatStore";
+import { ChatStore } from "@/modules/chat/store/ChatStore";
 import '@/modules/chat/assets/chat.scss';
 
-const chatStore = useChatStore();
+const useChatStore = ChatStore();
 const newMessage = ref("");
 
 const sendMessage = async () => {
   if (!newMessage.value.trim()) return;
-  await chatStore.sendMessage(newMessage.value);
+  await useChatStore.sendMessage(newMessage.value);
   newMessage.value = "";
 };
 </script>
@@ -20,7 +20,7 @@ const sendMessage = async () => {
     </div>
     <div class="chat-conversation">
       <div class="chat-messages">
-        <div v-for="(msg, index) in chatStore.messages" :key="index" :class="['message', msg.sender]">
+        <div v-for="(msg, index) in useChatStore.messages" :key="index" :class="['message', msg.sender]">
           {{ msg.text }}
         </div>
       </div>
