@@ -7,7 +7,7 @@ const ChatService = {
 
     async sendMessage(conversationId: number, message: string) {
         const payload = { conversation_id: conversationId, message: message };
-        const response = await ApiService.post("/chat", payload);
+        const response = await ApiService.post("/send-message", payload);
         return response.data;
     },
 };
