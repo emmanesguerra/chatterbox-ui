@@ -1,4 +1,5 @@
 // src/assets/styles/global.scss
+@use "sass:color";
 
 $primary-font: 'Inter', sans-serif;
 $base-color: #333;
@@ -49,6 +50,7 @@ a {
     transition: color 0.2s ease-in-out;
 
     &:hover {
-        color: darken($base-color, 10%);
+        color: color.adjust($base-color, $lightness: -10%);
+
     }
 }

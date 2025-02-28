@@ -1,7 +1,9 @@
 <template>
-    <div class="chat-window">
-      <div v-for="message in messages" :key="message.id" class="message">
-        <span class="user">{{ message.user }}:</span> {{ message.text }}
+    <div class="chat-messages">
+      <div v-for="message in messages" 
+        :key="message.id" 
+        :class="['message', message.sender]" >
+        <span v-html="message.text"></span>
       </div>
     </div>
   </template>

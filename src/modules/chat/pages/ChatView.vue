@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { ChatStore } from "@/modules/chat/store/ChatStore";
-import '@/modules/chat/assets/chat.scss';
+import ChatWindow from "@/modules/chat/components/ChatWindow.vue";
+import MessageInput from "@/modules/chat/components/MessageInput.vue";
+import "@/modules/chat/assets/chat.scss";
 
 const useChatStore = ChatStore();
-const newMessage = ref("");
+const messages = useChatStore.messages; // Bind messages from store
 
-const sendMessage = async () => {
-  if (!newMessage.value.trim()) return;
-  await useChatStore.sendMessage(newMessage.value);
-  newMessage.value = "";
+const sendMessage = async (message: string) => {
+  if (!message.trim()) return;
+  await useChatStore.sendMessage(message);
 };
 </script>
 
@@ -19,15 +20,8 @@ const sendMessage = async () => {
 
     </div>
     <div class="chat-conversation">
-      <div class="chat-messages">
-        <div v-for="(msg, index) in useChatStore.messages" :key="index" :class="['message', msg.sender]">
-          {{ msg.text }}
-        </div>
-      </div>
-      <div class="chat-input">
-        <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="Type a message..." />
-        <button @click="sendMessage">Send</button>
-      </div>
+      <ChatWindow :messages="messages" />
+      <MessageInput @send-message="sendMessage" />
     </div>
   </div>
 </template>
