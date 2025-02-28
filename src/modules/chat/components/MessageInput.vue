@@ -1,12 +1,12 @@
 <template>
-    <div class="message-input">
+    <div class="chat-input">
       <input v-model="message" @keyup.enter="sendMessage" placeholder="Type a message..." />
       <button @click="sendMessage">Send</button>
     </div>
   </template>
   
   <script setup>
-  import { ref, defineEmits } from 'vue';
+  import { ref } from 'vue';
   
   const message = ref('');
   const emit = defineEmits(['send-message']);
@@ -18,4 +18,3 @@
     }
   };
   </script>
-  
