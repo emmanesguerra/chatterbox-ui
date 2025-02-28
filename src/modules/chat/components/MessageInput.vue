@@ -6,7 +6,7 @@
   </template>
   
   <script setup>
-  import { ref, defineEmits } from 'vue';
+  import { ref } from 'vue';
   
   const message = ref('');
   const emit = defineEmits(['send-message']);
@@ -18,4 +18,3 @@
     }
   };
   </script>
-  
