@@ -9,9 +9,9 @@ export const ChatStore = defineStore("chat", {
     error: null as string | null,
   }),
   actions: {
-    async createConversation(title: string) {
+    async createConversation(message: string) {
       try {
-        const response = await ChatService.createConversation(title);
+        const response = await ChatService.createConversation(message);
         if (response && response.data.id) {
           this.conversationId = response.data.id;
         }
@@ -26,7 +26,7 @@ export const ChatStore = defineStore("chat", {
       try {
 
         if (!this.conversationId) {
-          await this.createConversation("New Chat");
+          await this.createConversation(message);
         }
 
         const response = await ChatService.sendMessage(this.conversationId, message);

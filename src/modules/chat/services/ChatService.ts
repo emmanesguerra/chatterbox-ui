@@ -1,8 +1,8 @@
 import ApiService from "@/core/services/ApiService";
 
 const ChatService = {
-    async createConversation(title: string) {
-        return await ApiService.post("/conversations-create", { title });
+    async createConversation(message: string) {
+        return await ApiService.post("/conversations-create", { message });
     },
 
     async sendMessage(conversationId: number, message: string) {
