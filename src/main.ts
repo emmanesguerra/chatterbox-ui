@@ -3,6 +3,8 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 import '@/assets/styles/global.scss';
+import "remixicon/fonts/remixicon.css";
+
 
 const app = createApp(App);
 const pinia = createPinia();

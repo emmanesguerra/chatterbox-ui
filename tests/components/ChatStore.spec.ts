@@ -31,13 +31,13 @@ describe("Chat Store", () => {
     setActivePinia(createPinia()); // Reset Pinia before each test
   });
 
-//   it("fetches messages successfully", async () => {
-//     const useChatStore = ChatStore();
-//     await useChatStore.loadMessages(1, mockChatService);
+  it("fetches messages successfully", async () => {
+    const useChatStore = ChatStore();
+    await useChatStore.loadMessages(1, mockChatService);
     
-//     expect(useChatStore.messages).toHaveLength(1);
-//     expect(useChatStore.messages[0].content).toBe("Hello");
-//   });
+    expect(useChatStore.messages).toHaveLength(1);
+    expect(useChatStore.messages[0].content).toBe("Hello");
+  });
 
   it("sends a message successfully", async () => {
     const useChatStore = ChatStore();
@@ -47,14 +47,14 @@ describe("Chat Store", () => {
     expect(useChatStore.messages[0].text).toBe("Hi!");
   });
 
-//   it("handles errors when fetching messages fails", async () => {
-//     mockChatService.fetchMessages.mockRejectedValueOnce(new Error("Fetch Error"));
+  it("handles errors when fetching messages fails", async () => {
+    mockChatService.fetchMessages.mockRejectedValueOnce(new Error("Fetch Error"));
 
-//     const useChatStore = ChatStore();
-//     await useChatStore.fetchMessages(1, mockChatService);
+    const useChatStore = ChatStore();
+    await useChatStore.loadMessages(1, mockChatService);
 
-//     expect(useChatStore.error).toBe("Fetch Error");
-//   });
+    expect(useChatStore.error).toBe("Fetch Error");
+  });
 
   it("handles errors when sending a message fails", async () => {
     mockChatService.sendMessage.mockRejectedValueOnce(new Error("Send Error"));
