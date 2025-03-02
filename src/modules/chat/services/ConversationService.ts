@@ -8,6 +8,10 @@ const ConversationService = {
     async fetchConversations() {
         return await ApiService.get("/conversations");
     },
+
+    async deleteConversation(id: number) {
+        return await ApiService.delete(`/conversations/${id}`);
+    }
 };
 
 export default ConversationService;

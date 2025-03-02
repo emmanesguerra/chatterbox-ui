@@ -78,5 +78,20 @@ export const ConversationStore = defineStore("conversation", {
         this.error = error instanceof Error ? error.message : "Failed to create conversation.";
       }
     },
+
+    async deleteConversation(
+      conversationId: number, 
+      conversationService: { deleteConversation: (id: number) => Promise<any> }
+    ) {
+      this.error = null;
+      
+      try {
+        await conversationService.deleteConversation(conversationId);
+        
+        this.conversations = this.conversations.filter(convo => convo.id !== conversationId);
+      } catch (error) {
+        this.error = error instanceof Error ? error.message : "Failed to delete conversation.";
+      }
+    }
   },
 });
