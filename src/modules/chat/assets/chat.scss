@@ -8,7 +8,7 @@ $user-bg: $primary-color;
 $text-color: #333;
 $input-border: #ccc;
 $input-bg: #fff;
-$sidebar-bg: #f4f4f4;
+$sidebar-bg: #000000d8;
 
 // 🏗 Chat Container (Flexbox layout)
 .chat-container {
@@ -23,31 +23,59 @@ $sidebar-bg: #f4f4f4;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
     // 📜 Chat History (Sidebar on the left)
-    .chat-history {
-        min-width: 250px; // Sidebar width
+    .chat-history { // Sidebar width
+        width: 250px;
+        flex-shrink: 0;
         background: $sidebar-bg;
         border-right: 1px solid #ddd;
         padding: 15px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-
-        h3 {
-            font-size: 16px;
-            font-weight: bold;
+        
+        h3, h4 {
+            color: #fff;
             margin-bottom: 10px;
         }
+    
+        h3 {
+            font-size: 16px;
+        }
+    
+        h4 {
+            font-size: 14px;
+        }
 
-        .history-item {
-            padding: 10px;
-            margin-bottom: 5px;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s ease-in-out;
+        .conversation-list {
+            padding: 5px;
 
-            &:hover {
-                background: color.adjust($sidebar-bg, $lightness: -5%);
+            ul {
+                list-style: none;
+                padding: 0;
+                margin-bottom: 1.5rem;
+
+                li {
+                    cursor: pointer;
+                    padding: 3px;
+                    border-radius: 4px;
+                    transition: background 0.2s;
+                    font-size: 12px;
+                    color: #ddd;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis; 
+                    max-width: 100%;  
+
+                    &:hover {
+                        background: #f0f0f0;
+                        color: $sidebar-bg;
+                    }
+
+                    &.active {
+                        background: #ddd;
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }

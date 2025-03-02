@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import ChatService from "@/modules/chat/services/ChatService";
 
 export const ChatStore = defineStore("chat", {
   state: () => ({
@@ -8,31 +7,51 @@ export const ChatStore = defineStore("chat", {
     loading: false,
     error: null as string | null,
   }),
+
   actions: {
-    async createConversation(message: string) {
+    async sendMessage(
+      message: string, 
+      chatService: { sendMessage: (id: number, msg: string) => Promise<any> }
+    ) {
+      this.messages.push({ sender: "user", text: message });
+      this.loading = true;
+      this.error = null;
+
       try {
-        const response = await ChatService.createConversation(message);
-        if (response && response.data.id) {
-          this.conversationId = response.data.id;
+        if (!this.conversationId) {
+          throw new Error("Conversation ID is missing.");
+        }
+
+        const response = await chatService.sendMessage(this.conversationId, message);
+        if (response?.message) {
+          this.messages.push({ sender: "bot", text: response.message });
+        } else {
+          throw new Error("Invalid response from ChatService.");
         }
       } catch (error) {
-        this.error = "Failed to create conversation.";
+        this.error = error instanceof Error ? error.message : "An unexpected error occurred.";
+      } finally {
+        this.loading = false;
       }
     },
 
-    async sendMessage(message: string) {
-      this.messages.push({ sender: "user", text: message });
+    async loadMessages(
+      conversationId: number, 
+      chatService: { fetchMessages: (id: number) => Promise<any> }
+    ) {
       this.loading = true;
+      this.error = null;
+
       try {
-
-        if (!this.conversationId) {
-          await this.createConversation(message);
+        const response = await chatService.fetchMessages(conversationId);
+        if (response?.data?.messages) {
+          this.conversationId = conversationId;
+          this.messages = response.data.messages;
+        } else {
+          throw new Error("Failed to load messages.");
         }
-
-        const response = await ChatService.sendMessage(this.conversationId, message);
-        this.messages.push({ sender: "bot", text: response.message });
       } catch (error) {
-        this.error = "Failed to get response.";
+        this.error = error instanceof Error ? error.message : "An unexpected error occurred.";
       } finally {
         this.loading = false;
       }
