@@ -7,6 +7,11 @@
     >
       <span v-html="message.text"></span>
     </div>
+
+    <div v-if="useChatStore.loading" class="preloader">
+      <div class="scaling-circle"></div>
+      <span class="generating-text">Generating a response...</span>
+    </div>
   </div>
 </template>
 
