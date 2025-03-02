@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const ChatStore = defineStore("chat", {
   state: () => ({
     conversationId: null as number | null,
-    messages: [] as { sender: "user" | "bot"; text: string }[],
+    messages: [] as { sender: "user" | "bot"; text: string; displayed: boolean }[],
     loading: false,
     error: null as string | null,
   }),
@@ -13,7 +13,7 @@ export const ChatStore = defineStore("chat", {
       message: string, 
       chatService: { sendMessage: (id: number, msg: string) => Promise<any> }
     ) {
-      this.messages.push({ sender: "user", text: message });
+      this.messages.push({ sender: "user", text: message, displayed: true });
       this.loading = true;
       this.error = null;
 
@@ -24,7 +24,7 @@ export const ChatStore = defineStore("chat", {
 
         const response = await chatService.sendMessage(this.conversationId, message);
         if (response?.message) {
-          this.messages.push({ sender: "bot", text: response.message });
+          this.messages.push({ sender: "bot", text: response.message, displayed: false });
         } else {
           throw new Error("Invalid response from ChatService.");
         }
