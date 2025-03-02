@@ -66,4 +66,26 @@ describe("Chat Store", () => {
 
     expect(useChatStore.error).toBe("Send Error");
   });
+    
+  it("resets chat correctly", () => {
+    const useChatStore = ChatStore();
+
+    // Set initial state
+    useChatStore.conversationId = 5;
+    useChatStore.messages = [
+      { sender: "user", text: "Test message" },
+      { sender: "bot", text: "Bot response" },
+    ];
+    useChatStore.error = "Some error";
+    useChatStore.loading = true;
+
+    // Call reset function
+    useChatStore.resetChat();
+
+    // Expectations
+    expect(useChatStore.conversationId).toBeNull();
+    expect(useChatStore.messages).toHaveLength(0);
+    expect(useChatStore.error).toBeNull();
+    expect(useChatStore.loading).toBeFalsy();
+  });
 });

@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
+import { ChatStore } from "@/modules/chat/store/ChatStore";
 import { ConversationStore } from "@/modules/chat/store/ConversationStore";
 import ConversationService from "@/modules/chat/services/ConversationService";
 
 const useConversationStore = ConversationStore();
+const useChatStore = ChatStore();
 
 const selectConversation = (conversationId: number) => {
   useConversationStore.loadMessages(conversationId);
+};
+
+const resetChat = () => {
+  useChatStore.$reset(); // Reset chat store data (conversationId -> null)
 };
 
 const groupedConversations = computed(() => useConversationStore.groupedConversations);
@@ -15,10 +21,18 @@ const groupedConversations = computed(() => useConversationStore.groupedConversa
 onMounted(() => {
   useConversationStore.fetchConversations(ConversationService);
 });
+
 </script>
 
 <template>
   <div class="conversation-list">
+    <div class="header">
+      <ul>
+        <li>
+          <span @click="resetChat">+ Start Conversation</span>
+        </li>
+      </ul>
+    </div>
 
     <div v-if="groupedConversations.today.length">
       <h4>Today</h4>

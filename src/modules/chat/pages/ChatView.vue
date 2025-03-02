@@ -42,8 +42,37 @@ const handleSendMessage = async (message: string) => {
       <ConversationList />
     </div>
     <div class="chat-conversation">
-      <ChatWindow :messages="messages" />
-      <MessageInput @send-message="handleSendMessage" />
+      <template v-if="useChatStore.conversationId">
+        <ChatWindow :messages="messages" />
+        <MessageInput @send-message="handleSendMessage" />
+      </template>
+      <template v-else>
+        <div class="initial-message">
+          <p class="assistant-prompt">How can I assist you today?</p>
+          <MessageInput @send-message="handleSendMessage" class="centered-input" />
+        </div>
+      </template>
     </div>
   </div>
 </template>
+
+
+<style scoped>
+.initial-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.assistant-prompt {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.centered-input {
+  width: 55%;
+}
+</style>

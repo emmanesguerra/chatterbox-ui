@@ -48,6 +48,10 @@ $sidebar-bg: #000000d8;
 
         .conversation-list {
             padding: 5px;
+            
+            .header {
+                margin-bottom: 1rem;
+            }
 
             ul {
                 list-style: none;

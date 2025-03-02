@@ -56,5 +56,12 @@ export const ChatStore = defineStore("chat", {
         this.loading = false;
       }
     },
+
+    resetChat() {
+      this.conversationId = null;
+      this.messages = [];
+      this.error = null;
+      this.loading = false;
+    }
   },
 });
