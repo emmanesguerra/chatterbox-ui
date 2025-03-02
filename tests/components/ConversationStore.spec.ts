@@ -13,6 +13,7 @@ const mockConversationService = {
   createConversation: vi.fn().mockResolvedValue({
     data: { id: 3, title: "New Chat", created_at: "2024-03-03" },
   }),
+  deleteConversation: vi.fn().mockResolvedValue({ message: "Deleted successfully" }),
 };
 
 describe("Conversation Store", () => {
@@ -52,5 +53,27 @@ describe("Conversation Store", () => {
     await useConversationStore.createConversation("Hello!", mockConversationService);
 
     expect(useConversationStore.error).toBe("Create Failed");
+  });
+    
+  it("deletes a conversation successfully", async () => {
+    const useConversationStore = ConversationStore();
+    await useConversationStore.fetchConversations(mockConversationService);
+
+    await useConversationStore.deleteConversation(1, mockConversationService);
+
+    expect(useConversationStore.conversations).toHaveLength(1);
+    expect(useConversationStore.conversations[0].id).toBe(2);
+  });
+
+  it("handles errors when deleting a conversation fails", async () => {
+    mockConversationService.deleteConversation.mockRejectedValueOnce(new Error("Delete Failed"));
+
+    const useConversationStore = ConversationStore();
+    await useConversationStore.fetchConversations(mockConversationService);
+
+    await useConversationStore.deleteConversation(1, mockConversationService);
+
+    expect(useConversationStore.error).toBe("Delete Failed");
+    expect(useConversationStore.conversations).toHaveLength(2);
   });
 });
