@@ -55,24 +55,3 @@ const handleSendMessage = async (message: string) => {
     </div>
   </div>
 </template>
-
-
-<style scoped>
-.initial-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.assistant-prompt {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.centered-input {
-  width: 55%;
-}
-</style>

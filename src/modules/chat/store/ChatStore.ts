@@ -44,9 +44,8 @@ export const ChatStore = defineStore("chat", {
 
       try {
         const response = await chatService.fetchMessages(conversationId);
-        if (response?.data?.messages) {
-          this.conversationId = conversationId;
-          this.messages = response.data.messages;
+        if (response?.data) {
+          this.messages = response.data;
         } else {
           throw new Error("Failed to load messages.");
         }

@@ -14,7 +14,7 @@ $sidebar-bg: #000000d8;
 .chat-container {
     display: flex;
     height: 90vh;
-    width: 900px;
+    width: 1200px;
     margin: auto;
     border-radius: 8px;
     overflow: hidden;
@@ -97,6 +97,24 @@ $sidebar-bg: #000000d8;
             padding: 15px;
             display: flex;
             flex-direction: column;
+        }
+
+        .initial-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .assistant-prompt {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .centered-input {
+            width: 55%;
         }
 
         // 💬 Message Styling

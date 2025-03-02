@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
 import { ChatStore } from "@/modules/chat/store/ChatStore";
+import ChatService from "@/modules/chat/services/ChatService";
 import { ConversationStore } from "@/modules/chat/store/ConversationStore";
 import ConversationService from "@/modules/chat/services/ConversationService";
 
@@ -8,7 +9,7 @@ const useConversationStore = ConversationStore();
 const useChatStore = ChatStore();
 
 const selectConversation = (conversationId: number) => {
-  useConversationStore.loadMessages(conversationId);
+  useChatStore.loadMessages(conversationId, ChatService);
 };
 
 const resetChat = () => {
