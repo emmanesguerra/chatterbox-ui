@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { defineEmits } from "vue";
 
 const props = defineProps<{
   conversation: { id: number; title?: string };
@@ -10,7 +10,7 @@ const emit = defineEmits(["delete", "select"]);
 const confirmDelete = (id: number) => {
   const isConfirmed = window.confirm("Are you sure you want to delete this conversation?");
   if (isConfirmed) {
-    emit("delete", id);
+    emit("delete", props.conversation.id);
   }
 };
 </script>
