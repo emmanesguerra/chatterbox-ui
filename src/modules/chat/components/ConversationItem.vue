@@ -5,7 +5,7 @@ const props = defineProps<{
   conversation: { id: number; title?: string };
 }>();
 
-const emit = defineEmits(["delete"]);
+const emit = defineEmits(["delete", "select"]);
 
 const confirmDelete = (id: number) => {
   const isConfirmed = window.confirm("Are you sure you want to delete this conversation?");
