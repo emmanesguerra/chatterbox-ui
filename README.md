@@ -69,7 +69,7 @@ Check your installed versions with:
 ```sh
 node -v
 npm -v
-
+```
 
 ## 📜 Available Scripts
 | Command               | Description                   |
