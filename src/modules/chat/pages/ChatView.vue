@@ -8,6 +8,7 @@ import ConversationList from "@/modules/chat/components/ConversationList.vue";
 import ChatService from "@/modules/chat/services/ChatService";
 import ConversationService from "@/modules/chat/services/ConversationService";
 import "@/modules/chat/assets/chat.scss";
+import { showToast } from '@/utils/toast';
 
 const useChatStore = ChatStore();
 const useConversationStore = ConversationStore();
@@ -31,7 +32,7 @@ const handleSendMessage = async (message: string) => {
     // Step 2: Send the message
     await useChatStore.sendMessage(message, ChatService);
   } catch (error) {
-    console.error("Error in sendMessage:", error);
+    showToast(error?.message, 'error');
   }
 };
 </script>
