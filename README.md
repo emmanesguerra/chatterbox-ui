@@ -53,7 +53,7 @@ npm install
 ### 3️⃣ Setup Environment Variables  
 Create a `.env` file in the root directory and configure:
 ```ini
-VITE_APP_API_URL=http://your-backend-api.com/api/v1
+VITE_APP_API_URL=http://your-backend-api.com/api/
 ```
 
 ### 4️⃣ Run the Project
@@ -76,6 +76,7 @@ npm -v
 |-----------------------|-------------------------------|
 | `npm run dev`         | Start development server      |
 | `npm run test`        | Run unit tests with Vitest    |
+```
 
 ## 👥 Contributors
 - [Emmanuelle Esguerra](https://github.com/emmanesguerra)
