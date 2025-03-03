@@ -14,6 +14,31 @@ Chatterbox UI is a frontend interface built with Vue.js for an AI-powered chat a
 - **TypeScript** (Strict Type Checking)
 - **Vite** (Build Tool)
 
+## 📂 Project Structure
+```
+src/
+├── assets/
+│   ├── styles/            # Global styles and SCSS files
+├── components/            # Reusable Vue components
+├── core/
+│   ├── services/          # Core services (e.g., API handlers)
+├── modules/
+│   ├── chat/              # Chat module
+│   │   ├── assets/        # Chat-specific assets (e.g., images, styles)
+│   │   ├── components/    # Components related to chat (e.g., messages, input box)
+│   │   ├── pages/         # Chat-related pages (e.g., ChatView.vue)
+│   │   ├── services/      # API services for chat module
+│   │   ├── store/         # Pinia store for chat-related state management
+├── router/                # Vue Router configurations
+├── App.vue                # Root Vue component
+├── main.ts                # Application entry point
+tests/
+├── components/            # Unit tests for components
+.env                       # Environment variables configuration
+package.json               # Project dependencies and scripts
+
+```
+
 ## 📌 Prerequisites
 - **Node.js** v20 or later (recommended)
 - **npm** v8 or later
@@ -22,30 +47,6 @@ Check your installed versions with:
 ```sh
 node -v
 npm -v
-```
-
-## 📂 Project Structure
-```plaintext
-|── src/
-|   |── assets/
-|       |── styles/              # Global styles and SCSS files
-|  - components/            
-|  - core/
-|    - services/            # Core services (e.g., API handlers)
-|  - modules/
-|    - chat/                # Chat module
-|        - assets/          # Chat-specific assets (e.g., images, styles)
-|        - components/      # Components related to chat (e.g., messages, input box)
-|        - pages/           # Chat-related pages (e.g., ChatView.vue)
-|        - services/        # API services for chat module
-|        - store/           # Pinia store for chat-related state management
-|  - router/                # Vue Router configurations
-|  - App.vue                # Root Vue component
-|  - main.ts                # Application entry point
-|- tests/
-|    - components/          # Unit tests for components
-|- .env                     # Environment variables configuration
-|- package.json             # Project dependencies and scripts
 ```
 
 ## 🛠️ Setup & Installation
@@ -77,8 +78,10 @@ npm run dev
 | `npm run dev`         | Start development server      |
 | `npm run test`        | Run unit tests with Vitest    |
 
+
 ### 👥 Contributors
 - [Emmanuelle Esguerra](https://github.com/emmanesguerra)
+
 
 ### ⚠️ Disclaimer  
 This project is developed solely for **learning and experimentation**. It is not intended for production use, and no guarantees are provided regarding its functionality or security.
