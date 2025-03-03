@@ -1,0 +1,13 @@
+/* Smaller toast */
+.Vue-Toastification__toast {
+    font-size: 12px;
+    border-radius: 6px;
+    max-width: 250px;
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+.Vue-Toastification__toast--error {
+    background-color: #3f3d3d;
+    color: #f1f1f1;
+}   
