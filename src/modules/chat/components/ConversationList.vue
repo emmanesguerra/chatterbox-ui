@@ -28,7 +28,9 @@ const deleteConversation = async (conversationId: number) => {
 };
 
 onMounted(() => {
-  useConversationStore.fetchConversations(ConversationService);
+  if (!useConversationStore.conversations.length) {
+    useConversationStore.fetchConversations(ConversationService);
+  }
 });
 </script>
 
