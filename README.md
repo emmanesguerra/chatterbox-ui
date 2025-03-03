@@ -63,6 +63,9 @@ npm install
 
 ### 3️⃣ Setup Environment Variables  
 Create a `.env` file in the root directory and configure:
+```sh
+cp .env.example .env
+```
 ```ini
 VITE_APP_API_URL=http://your-backend-api.com/api/
 ```
