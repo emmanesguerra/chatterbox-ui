@@ -14,28 +14,38 @@ Chatterbox UI is a frontend interface built with Vue.js for an AI-powered chat a
 - **TypeScript** (Strict Type Checking)
 - **Vite** (Build Tool)
 
+## 📌 Prerequisites
+- **Node.js** v20 or later (recommended)
+- **npm** v8 or later
+
+Check your installed versions with:
+```sh
+node -v
+npm -v
+```
+
 ## 📂 Project Structure
 ```plaintext
-- src/
-  - assets/
-    - styles/              # Global styles and SCSS files
-  - components/            
-  - core/
-    - services/            # Core services (e.g., API handlers)
-  - modules/
-    - chat/                # Chat module
-        - assets/          # Chat-specific assets (e.g., images, styles)
-        - components/      # Components related to chat (e.g., messages, input box)
-        - pages/           # Chat-related pages (e.g., ChatView.vue)
-        - services/        # API services for chat module
-        - store/           # Pinia store for chat-related state management
-  - router/                # Vue Router configurations
-  - App.vue                # Root Vue component
-  - main.ts                # Application entry point
-- tests/
-    - components/          # Unit tests for components
-- .env                     # Environment variables configuration
-- package.json             # Project dependencies and scripts
+|── src/
+|   |── assets/
+|       |── styles/              # Global styles and SCSS files
+|  - components/            
+|  - core/
+|    - services/            # Core services (e.g., API handlers)
+|  - modules/
+|    - chat/                # Chat module
+|        - assets/          # Chat-specific assets (e.g., images, styles)
+|        - components/      # Components related to chat (e.g., messages, input box)
+|        - pages/           # Chat-related pages (e.g., ChatView.vue)
+|        - services/        # API services for chat module
+|        - store/           # Pinia store for chat-related state management
+|  - router/                # Vue Router configurations
+|  - App.vue                # Root Vue component
+|  - main.ts                # Application entry point
+|- tests/
+|    - components/          # Unit tests for components
+|- .env                     # Environment variables configuration
+|- package.json             # Project dependencies and scripts
 ```
 
 ## 🛠️ Setup & Installation
@@ -59,16 +69,6 @@ VITE_APP_API_URL=http://your-backend-api.com/api/
 ### 4️⃣ Run the Project
 ```sh
 npm run dev
-```
-
-## 📌 Prerequisites
-- **Node.js** v20 or later (recommended)
-- **npm** v8 or later
-
-Check your installed versions with:
-```sh
-node -v
-npm -v
 ```
 
 ## 📜 Available Scripts
