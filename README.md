@@ -76,10 +76,9 @@ npm -v
 |-----------------------|-------------------------------|
 | `npm run dev`         | Start development server      |
 | `npm run test`        | Run unit tests with Vitest    |
-```
 
-## 👥 Contributors
+### 👥 Contributors
 - [Emmanuelle Esguerra](https://github.com/emmanesguerra)
 
-## ⚠️ Disclaimer  
+### ⚠️ Disclaimer  
 This project is developed solely for **learning and experimentation**. It is not intended for production use, and no guarantees are provided regarding its functionality or security.
